@@ -6,7 +6,7 @@ from PIL import Image
 # 🎯 Configuração da página
 st.set_page_config(
     page_title="Dashboard Produção - MTECH",
-    page_icon="logo.png",  # Usa o logo como ícone da aba
+    page_icon="logo.png",
     layout="wide"
 )
 
@@ -20,14 +20,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.markdown(
-    "<h3 style='text-align: center;'>Status Operacional | Peças Faltantes | Estoque Intermediário</h3>",
+    "<h3 style='text-align: center;'>Controle de Produção - RACK MINI ADES",
     unsafe_allow_html=True
 )
 
 st.markdown("---")
 
-# 📄 Link do arquivo Excel no OneDrive (link de download direto)
-file_path = "https://mtechdisplays-my.sharepoint.com/:x:/g/personal/pcp_mtechdisplays_com_br/ETg7pxONjLZEmW-myHwyEJcBNIrKDlqYvw_UmFxzeFTxiQ?download=1"
+# 📄 Link direto para download da planilha no Google Drive
+file_path = "https://docs.google.com/spreadsheets/d/1MoGJPvpWaelOXrF34uA88DCQqkcVADTW/export?format=xlsx"
 
 # 🚀 Função para carregar os dados
 @st.cache_data
