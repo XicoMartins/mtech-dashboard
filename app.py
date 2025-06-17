@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import os
 from PIL import Image
-
 
 # 🎯 Configuração da página
 st.set_page_config(
@@ -14,9 +12,6 @@ st.set_page_config(
 
 # 🚩 Carregar o logo
 logo = Image.open("logo.png")
-logo.save("temp_logo.png")
-
-
 st.image(logo, width=300)
 
 # 🏷️ Título e subtítulo
@@ -31,8 +26,8 @@ st.markdown(
 
 st.markdown("---")
 
-# 📄 Caminho do arquivo Excel
-file_path = os.path.join(os.path.dirname(__file__), 'BASE PARA DASH TESTE.xlsx')
+# 📄 Link do arquivo Excel no OneDrive (link de download direto)
+file_path = "https://mtechdisplays-my.sharepoint.com/:x:/g/personal/pcp_mtechdisplays_com_br/ETg7pxONjLZEmW-myHwyEJcBNIrKDlqYvw_UmFxzeFTxiQ?download=1"
 
 # 🚀 Função para carregar os dados
 @st.cache_data
@@ -43,7 +38,8 @@ def load_data():
         sheet_name=0,
         skiprows=7,
         nrows=11,
-        usecols="A:C"
+        usecols="A:C",
+        engine='openpyxl'
     )
     status_dobradeira.columns = status_dobradeira.iloc[0]
     status_dobradeira = status_dobradeira[1:].reset_index(drop=True)
@@ -54,7 +50,8 @@ def load_data():
         sheet_name=0,
         skiprows=20,
         nrows=11,
-        usecols="A:E"
+        usecols="A:E",
+        engine='openpyxl'
     )
     pecas_faltantes_solda.columns = pecas_faltantes_solda.iloc[0]
     pecas_faltantes_solda = pecas_faltantes_solda[1:].reset_index(drop=True)
@@ -65,13 +62,13 @@ def load_data():
         sheet_name=0,
         skiprows=32,
         nrows=11,
-        usecols="A:E"
+        usecols="A:E",
+        engine='openpyxl'
     )
     estoque_intermediario.columns = estoque_intermediario.iloc[0]
     estoque_intermediario = estoque_intermediario[1:].reset_index(drop=True)
 
     return status_dobradeira, pecas_faltantes_solda, estoque_intermediario
-
 
 # 🔄 Carregar os dados
 status_dobradeira, pecas_faltantes_solda, estoque_intermediario = load_data()
